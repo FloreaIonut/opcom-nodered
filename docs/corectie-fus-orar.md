@@ -1,7 +1,7 @@
 # Corecția fusului orar OPCOM (v1.1.0)
 
 ## Problema
-Intervalele OPCOM PZU sunt în **CET/CEST** (ora României minus 1 h), nu în ora României. Conform procedurii OPCOM pentru PZU (v8, 10.07.2026), intervalul 1 este 00:00–00:15 CET/CEST, adică **01:00–01:15 ora României**. Versiunea 1.0 lua `ora = (interval-1)*15` și intervalul curent din ceasul României, deci starea senzorului și listele `azi_*`/`maine_*` erau decalate cu 1 h (4 sloturi).
+Intervalele OPCOM PZU sunt în **CET/CEST** (ora României minus 1 h), nu în ora României. Conform procedurii OPCOM pentru PZU (ediția 6, 06/2022), intervalul 1 este 00:00–00:15 CET/CEST, adică **01:00–01:15 ora României**. Versiunea 1.0 lua `ora = (interval-1)*15` și intervalul curent din ceasul României, deci starea senzorului și listele `azi_*`/`maine_*` erau decalate cu 1 h (4 sloturi).
 
 ## Logica nouă
 - La salvare, fiecare slot primește `ts_utc` (început de slot, UTC) = 00:00 CET/CEST al zilei OPCOM + `(interval-1)*15 min`. Se păstrează `interval` și `ora_cet`.
